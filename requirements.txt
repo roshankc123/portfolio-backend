@@ -1,0 +1,4 @@
+flask
+pyOpenSSL
+flask-cors
+requests
