@@ -1,9 +1,8 @@
 from flask import * 
 from OpenSSL import SSL
 from flask_cors import CORS
-import json
 import repos_list
-import os
+from middleware import middleware 
 
 app = Flask(__name__)
 # or remove the origins field for allowing all origins
@@ -11,6 +10,7 @@ CORS(app, origins=['your_website'])
 
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 1
 
+app.wsgi_app = middleware(app.wsgi_app)
 
 @app.route('/')
 def index():
