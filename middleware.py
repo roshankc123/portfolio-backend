@@ -10,9 +10,14 @@ class middleware():
         return self.app(environ, start_response)
     
     def count(app):
-        c = open('count','r+').read()
-        if(c == ''):
+        try:
+            c = open('count','r+').read()
+            if c == '':
+                c = 1
+        except:
+            open('count', 'w')
             c = 1
+
         c = int(c)
         print(c)
         open('count','w').write(str(c + 1))
