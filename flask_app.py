@@ -25,5 +25,10 @@ def update():
     repos_list.update_repos()
     return ''
 
+@app.route('/visitor')
+def visitor():
+    return open('count','r+').read()
+
+
 if __name__ == "__main__":
     app.run('127.0.0.1', '8000' ,debug=True)
